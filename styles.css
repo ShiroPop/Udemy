@@ -1,14 +1,29 @@
-* {
-  margin: 0;
+/* * {
+  /* margin: 0;
   padding: 0;
-}
+} */ 
 h1 {
   color: blue;
   text-align: center;
+  font-size: 40px;
 }
 p {
   font-size: 16px;
   color: gray;
   line-height: 1.5;
   margin: 20px;
+}
+
+#overview {
+  background: red;
+  height: 100%;
+}
+
+.title {
+  color: green;
+}
+
+#overview h1{ 
+  color: white;
+
 }

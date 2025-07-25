@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <body>
+    <button id="fadeBtn">이미지 토글</button>
+    <img id="myImg" src="https://via.placeholder.com/150" alt="Placeholder 이미지" />
+
+    <script>
+      $(document).ready(function () {
+        $("#fadeBtn").click(function () {
+          $("#myImg").fadeToggle();
+        });
+      });
+    </script>
+  </body>
+</html>

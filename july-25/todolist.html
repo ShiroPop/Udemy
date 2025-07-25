@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <body>
+    <input id="todoInput" placeholder="할 일을 입력하세요" />
+    <button id="addBtn">추가</button>
+    <ul id="todoList"></ul>
+
+    <script>
+      $(document).ready(function () {
+        $("#addBtn").click(function () {
+          const todo = $("#todoInput").val().trim();
+          if (todo === "") {
+            alert("공백은 입력할 수 없습니다.");
+            return;
+          }
+
+          $("#todoList").append("<li>" + todo + "</li>");
+          $("#todoInput").val("");
+        });
+
+        $("#todoList").on("click", "li", function () {
+          $(this).remove();
+        });
+      });
+    </script>
+  </body>
+</html>

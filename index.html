@@ -7,8 +7,59 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1 style="color: red">환영합니다!</h1>
-    <h1>환영합니다!</h1>
-    <p>이것은 간단한 CSS 예제입니다.</p>
+    <main>
+      <section id="overview">
+        <h1>환영합니다!</h1>
+      </section>
+      <section id="plans">
+        <h1 class="title">Choose plan</h1>
+      </section>
+      <p>이것은 간단한 CSS 예제입니다.</p>
+    </main>
+    <div id="myAccordion">
+      <div class="accordion-header">섹션 1</div>
+      <div class="accordion-content">섹션 1의 내용입니다.</div>
+      <div class="accordion-header">섹션 2</div>
+      <div class="accordion-content">섹션 2의 내용입니다.</div>
+    </div>
+    <script>
+      // Accordion 컴포넌트 생성자 함수
+      function Accordion(elementId) {
+        this.element = document.getElementById(elementId);
+        this.headers = this.element.querySelectorAll(".accordion-header");
+        this.contents = this.element.querySelectorAll(".accordion-content");
+
+        // 이벤트 리스너 바인딩 (여기서 `this` 컨텍스트를 유지하는 것이 중요)
+        this.headers.forEach((header, index) => {
+          header.addEventListener("click", this.toggleContent.bind(this, index));
+        });
+      }
+
+      // 프로토타입에 메서드 추가
+      Accordion.prototype.toggleContent = function (index) {
+        // 모든 내용을 숨기고 선택된 내용만 보이도록 토글
+        this.contents.forEach((content, i) => {
+          if (i === index) {
+            content.style.display = content.style.display === "block" ? "none" : "block";
+          } else {
+            content.style.display = "none";
+          }
+        });
+
+        // 모든 헤더에서 'active' 클래스 제거하고 선택된 헤더에만 추가
+        this.headers.forEach((header, i) => {
+          if (i === index && this.contents[index].style.display === "block") {
+            header.classList.add("active");
+          } else {
+            header.classList.remove("active");
+          }
+        });
+      };
+
+      // 사용 예시
+      window.onload = function () {
+        const myAccordion = new Accordion("myAccordion");
+      };
+    </script>
   </body>
 </html>
